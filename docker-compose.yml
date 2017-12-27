@@ -1,7 +1,7 @@
 version: '3'
 services:
  flood:
-    image:kiralex/docker-image
+    image: kiralex/docker-image
     tty: true
     ports:
     - 49184:49184
@@ -11,5 +11,4 @@ services:
     - /etc/letsencrypt/archive/kiralex.me/privkey1.pem:/rtorrent/sslKey.pem
     - /etc/letsencrypt/archive/kiralex.me/cert1.pem:/rtorrent/sslCert.pem
     - /seedbox/downloads:/downloads
-
-
+    - /seedbox/flood:/rtorrent/flood

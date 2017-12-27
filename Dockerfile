@@ -5,7 +5,7 @@ RUN curl -sL https://deb.nodesource.com/setup_8.x |  bash
 RUN apt-get update && apt-get install -y nodejs
 
 
-RUN mkdir /rtorrent && mkdir /rtorrent/log /rtorrent/.session /rtorrent/flood && cd /rtorrent/log && touch rtorrent.log tracker.log storage.log
+RUN mkdir /rtorrent && mkdir /rtorrent/log /rtorrent/.session && cd /rtorrent/log && touch rtorrent.log tracker.log storage.log
 COPY rtorrent.rc /root/.rtorrent.rc
 
 RUN git clone https://github.com/jfurrow/flood.git
