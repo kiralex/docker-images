@@ -1,28 +1,14 @@
 version: '3'
 services:
-# rutorrent:
-#    image: linuxserver/rutorrent
-#    container_name: rutorrent
-#    ports:
-#    - 80:80
-#    - 5000:5000
-#    - 51413:51413
-#    - 6881:6881
-#    volumes:
-#    - /seedbox:/config
-#    - /seedbox:/downloads
  flood:
-    build: .
+    image: kiralex/docker-image
     tty: true
     ports:
     - 49184:49184
     - 3000:3000
     - 49999:49999
-#    environment: 
-#    - RTORRENT_SCGI:
     volumes:
     - /etc/letsencrypt/archive/kiralex.me/privkey1.pem:/rtorrent/sslKey.pem
     - /etc/letsencrypt/archive/kiralex.me/cert1.pem:/rtorrent/sslCert.pem
-    - /seedbox/downloads:/downloads
-
-
+    - /home/seedbox/downloads:/downloads
+    - /home/seedbox/flood:/rtorrent/flood/

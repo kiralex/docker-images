@@ -5,24 +5,24 @@ jobs:
    steps:
      - checkout
      - run: date
- builda:
+ build:
    machine: true
    steps:
      - checkout
      - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
-     # build the application image
      - run: docker build -t kiralex/docker-image .
-
-     # deploy the image
      - run: docker push kiralex/docker-image
 
 workflows:
    version: 2
    build-master:
      jobs:
-       - builda:
+       - build:
           filters:
-            tags:
-              only: /.*/
+                 #tags:
+             #only: /.*/
             branches:
-              ignore: /.*/
+              only: /^master*/
+             #ignore: /.*/
+
+
