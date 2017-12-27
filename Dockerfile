@@ -4,14 +4,15 @@ RUN apt-get update && apt-get install -y curl wget gnupg2 build-essential rtorre
 RUN curl -sL https://deb.nodesource.com/setup_8.x |  bash
 RUN apt-get update && apt-get install -y nodejs
 
-VOLUME /rtorrent
-RUN mkdir /rtorrent/log /rtorrent/download /rtorrent/.session && cd /rtorrent/log && touch rtorrent.log tracker.log storage.log
+
+RUN mkdir /rtorrent && mkdir /rtorrent/log /rtorrent/.session /rtorrent/flood && cd /rtorrent/log && touch rtorrent.log tracker.log storage.log
 COPY rtorrent.rc /root/.rtorrent.rc
 
 RUN git clone https://github.com/jfurrow/flood.git
 
-COPY flood.config.js /app/flood/config.js
+COPY flood.config.js /flood/config.js
 RUN cd flood && npm install && npm run build
 
+VOLUME ["/rtorrent/log","/rtorrent/flood","/rtorrent/.session"]
 
-CMD rtorrent > /dev/null & cd flood && npm start
+CMD touch /rtorrent/.session/rtorrent.lock && rm /rtorrent/.session/rtorrent.lock && cd flood && npm start > /dev/null & rtorrent

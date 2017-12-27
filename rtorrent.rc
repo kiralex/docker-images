@@ -12,7 +12,7 @@ max_peers = 100
 max_uploads = 20
 
 # Répertoire qui contient les fichiers téléchargés.
-directory = /rtorrent/downloads
+directory = /downloads
 
 # Répertoire où rTorrent stocke l'état de téléchargement des torrents.
 session = /rtorrent/.session

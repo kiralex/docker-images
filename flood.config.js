@@ -1,10 +1,10 @@
 const CONFIG = {
   baseURI: '/',
   dbCleanInterval: 1000 * 60 * 60,
-  dbPath: './server/db/',
+  dbPath: '/rtorrent/flood/flood-db',
   floodServerHost: '0.0.0.0',
   floodServerPort: 3000,
-  floodServerProxy: 'http://0.0.0.0',
+  floodServerProxy: 'http://127.0.0.1',
   maxHistoryStates: 30,
   pollInterval: 1000 * 5,
   secret: 'flood',
