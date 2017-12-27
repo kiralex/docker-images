@@ -11,4 +11,4 @@ services:
     - /etc/letsencrypt/archive/kiralex.me/privkey1.pem:/rtorrent/sslKey.pem
     - /etc/letsencrypt/archive/kiralex.me/cert1.pem:/rtorrent/sslCert.pem
     - /seedbox/downloads:/downloads
-#    - /seedbox/flood:/rtorrent/flood
+    - /seedbox/flood:/rtorrent/flood
