@@ -1,5 +1,10 @@
 version: 2
 jobs:
+ toto:
+   machine: true
+   steps:
+     - checkout
+     - run: date
  build:
    machine: true
    steps:
@@ -10,3 +15,16 @@ jobs:
 
      # deploy the image
      - run: docker push kiralex/docker-image
+
+workflows:
+   version: 2
+   build-master:
+     jobs:
+       - toto
+       - build
+     filters:
+       branches:
+         only: master
+       tags:
+         ignore: /*/
+
