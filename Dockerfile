@@ -13,6 +13,6 @@ RUN git clone https://github.com/jfurrow/flood.git
 COPY flood.config.js /flood/config.js
 RUN cd flood && npm install && npm run build
 
-VOLUME ["/rtorrent/log","/rtorrent/flood","/rtorrent/.session"]
+VOLUME ["/rtorrent/log","/rtorrent/.session"]
 
 CMD touch /rtorrent/.session/rtorrent.lock && rm /rtorrent/.session/rtorrent.lock && cd flood && npm start > /dev/null & rtorrent
