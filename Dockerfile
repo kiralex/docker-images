@@ -15,4 +15,4 @@ RUN cd flood && npm install && npm run build-assets
 
 VOLUME ["/rtorrent/log","/rtorrent/.session"]
 
-CMD touch /rtorrent/.session/rtorrent.lock && rm /rtorrent/.session/rtorrent.lock && cd flood && screen -S flood -dm npm start && screen -S rtorrent -dm rtorrent && tail -f /dev/null
+CMD touch /rtorrent/.session/rtorrent.lock && rm /rtorrent/.session/rtorrent.lock && cd flood && screen -S flood -dm rtorrent && sleep 3  && screen -S flood -dm npm start && tail -f /dev/null
