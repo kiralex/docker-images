@@ -1,6 +1,6 @@
 FROM debian:stable
 
-RUN apt-get update && apt-get install -y curl wget gnupg2 build-essential rtorrent git procps unzip
+RUN apt-get update && apt-get install -y curl wget gnupg2 build-essential rtorrent git procps unzip screen
 RUN curl -sL https://deb.nodesource.com/setup_8.x |  bash
 RUN apt-get update && apt-get install -y nodejs
 
@@ -15,4 +15,4 @@ RUN cd flood && npm install && npm run build-assets
 
 VOLUME ["/rtorrent/log","/rtorrent/.session"]
 
-CMD touch /rtorrent/.session/rtorrent.lock && rm /rtorrent/.session/rtorrent.lock && cd flood && npm start > /dev/null & rtorrent
+CMD touch /rtorrent/.session/rtorrent.lock && rm /rtorrent/.session/rtorrent.lock && cd flood && screen -S flood -dm npm start && screen -S rtorrent -dm rtorrent && tail -f /dev/null
